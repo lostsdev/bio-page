@@ -27,7 +27,7 @@
             text-decoration: none;
         }
 	.Rectangle1:hover {
-	    box-shadow: 0px 4px 30.199999809265137px 2px rgba(0, 0, 0, 0.25);
+	    box-shadow: 0px 0px 30.199999809265137px 0px rgba(235, 218, 218, 1);
 	}
         body {
             background-color: #7B7B7B; 
@@ -55,10 +55,10 @@
             width: 634px;
             height: 115px;
             background: #EBDADA;
-            box-shadow: 0px 4px 15.199999809265137px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 14px;
+            box-shadow: 0px 4px 15.199999809265137px 0px rgba(235, 218, 218, 1);
+            border-radius: 25px;
             animation: fade-in 1s ease-in-out;
-            transition: box-shadow 0.2s ease-in-out;
+            transition: box-shadow 0.4s ease-in-out;
         }
         .Lostslvtt:hover {
             opacity: 100%;
@@ -94,6 +94,7 @@
 
         .LocalTime {
             color: white;
+            animation: fade-in 1s ease-in-out;
             font-size: 40px;
             font-family: JetBrains Mono;
             font-weight: 400;
@@ -112,11 +113,23 @@
     <script>
         function updateTime() {
             var localTime = document.querySelector('.LocalTime');
-            localTime.textContent = new Date().toLocaleTimeString();
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            var timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+            localTime.textContent = timeString;
+            localTime.style.opacity = '40%';
+        }
+
+        function openLink() {
+            window.location.href = "https://github.com/lostsdev";
         }
 
         window.onload = function() {
+            var localTime = document.querySelector('.LocalTime');
             setInterval(updateTime, 1000);
+            localTime.style.opacity = '100%';
         };
     </script>
 </head>
@@ -124,9 +137,9 @@
     <div class="Desktop1">
         <a href="https://github.com/lostslvtt">
             <div class="Container">
-                <div class="Rectangle1">
+                <div class="Rectangle1" onclick="openLink()">
                     <div class="Lostslvtt">
-                        <a href="https://github.com/lostslvtt">lostslvtt</a>
+                        <a href="https://github.com/lostsdev">lostslvtt</a>
                     </div>
                 </div>
                 <div class="NotEndedYet">
