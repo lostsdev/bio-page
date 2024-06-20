@@ -2,6 +2,64 @@
 <html>
 <head>
     <style>
+        @keyframes fall {
+
+0% {
+
+  opacity: 0;
+
+}
+
+50% {
+
+  opacity: 1;
+
+}
+
+100% {
+
+  top: 100vh;
+
+  opacity: 1;
+
+}
+
+}
+
+@keyframes sway {
+
+0% {
+
+  margin-left: 0;
+
+}
+
+25% {
+
+  margin-left: 50px;
+
+}
+
+50% {
+
+  margin-left: -50px;
+
+}
+
+75% {
+
+  margin-left: 50px;
+
+}
+
+100% {
+
+  margin-left: 0;
+
+}
+
+}
+
         @keyframes fade-in {
     0% {
         opacity: 0;
@@ -58,7 +116,8 @@
             box-shadow: 0px 4px 15.199999809265137px 0px rgba(235, 218, 218, 1);
             border-radius: 25px;
             animation: fade-in 1s ease-in-out;
-            transition: box-shadow 0.4s ease-in-out;
+            transition: margin-top 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
         }
         .Lostslvtt:hover {
             opacity: 100%;
@@ -122,8 +181,17 @@
             localTime.style.opacity = '40%';
         }
 
+        function moveDiv() {
+            var div = document.querySelector('.Rectangle1');
+            div.style.marginTop = '-3px';
+        }
+        function moveDivBack(x) {
+            x.style.marginTop = '3px';
+        }
+
         function openLink() {
-            window.location.href = "https://github.com/lostsdev";
+            var url = "https://github.com/lostsdev";
+            window.open(url, '_blank').focus();
         }
 
         window.onload = function() {
@@ -131,15 +199,16 @@
             setInterval(updateTime, 1000);
             localTime.style.opacity = '100%';
         };
+
+
     </script>
 </head>
 <body>
     <div class="Desktop1">
-        <a href="https://github.com/lostslvtt">
             <div class="Container">
-                <div class="Rectangle1" onclick="openLink()">
+                <div class="Rectangle1" onclick="openLink()" onmouseover="moveDiv()" onmouseout="moveDivBack(this)">
                     <div class="Lostslvtt">
-                        <a href="https://github.com/lostsdev">lostslvtt</a>
+                        lostslvtt
                     </div>
                 </div>
                 <div class="NotEndedYet">
@@ -149,7 +218,6 @@
                     <?php echo date('H:i:s'); ?>  
                 </div>
             </div>
-        </a>
     </div>
 </body>
 </html>
