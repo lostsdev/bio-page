@@ -2,6 +2,9 @@
 <html>
 <head>
     <style>
+        * {
+            cursor: url(https://r2-bios.e-z.host/a83215b9-ed05-4377-a8db-aa76ce650ff4/54v8uexkkx.cur) 16 16, auto !important;
+        }
         @keyframes fall {
 
 0% {
@@ -86,6 +89,7 @@
         }
 	.Rectangle1:hover {
 	    box-shadow: 0px 0px 30.199999809265137px 0px rgba(235, 218, 218, 1);
+        transform: translateY(-0.2rem);
 	}
         body {
             background-color: #7B7B7B; 
@@ -110,13 +114,19 @@
         }
 
         .Rectangle1 {
+            z-index: 9;
+            transform-style: preserve-3d;
+            will-change: transform;
             width: 634px;
             height: 115px;
+            position: relative;
+            background-size: cover;
             background: #EBDADA;
             box-shadow: 0px 4px 15.199999809265137px 0px rgba(235, 218, 218, 1);
             border-radius: 25px;
             animation: fade-in 1s ease-in-out;
-            transition: margin-top 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            transition: all 0.2s ease-in-out, box-shadow 0.4s ease-in-out;
+            backdrop-filter: blur(4px)
 
         }
         .Lostslvtt:hover {
@@ -124,6 +134,7 @@
         }
 
         .Lostslvtt {
+            z-index: 10;
             color: #595757;
             font-size: 40px;
             font-family: JetBrains Mono;
@@ -170,35 +181,22 @@
         }
     </style>
     <script>
-        // Amount of Snowflakes
-        var snowMax = 35;
+        var snowMax = 50;
 
-        // Snowflake Colours
         var snowColor = ["#DDD", "#EEE"];
 
-        // Snow Entity
-        var snowEntity = "&#x2022;";
+        var snowEntity = "❄";
 
-        // Falling Velocity
         var snowSpeed = 0.75;
 
-        // Minimum Flake Size
-        var snowMinSize = 8;
+        var snowMinSize = 9;
 
-        // Maximum Flake Size
-        var snowMaxSize = 24;
+        var snowMaxSize = 25;
 
-        // Refresh Rate (in milliseconds)
         var snowRefresh = 50;
 
-        // Additional Styles
         var snowStyles = "cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;";
 
-        /*
-        // End of Configuration
-        // ----------------------------------------
-        // Do not modify the code below this line
-        */
 
         var snow = [],
             pos = [],
@@ -232,6 +230,8 @@
                 snow[i].posY = randomise(2 * marginBottom - marginBottom - 2 * snow[i].size);
                 snow[i].style.left = snow[i].posX + "px";
                 snow[i].style.top = snow[i].posY + "px";
+                snow[i].style.zIndex = 1;
+
             }
 
             moveSnow();
@@ -275,13 +275,13 @@
             localTime.style.opacity = '40%';
         }
 
-        function moveDiv() {
-            var div = document.querySelector('.Rectangle1');
-            div.style.marginTop = '-3px';
-        }
-        function moveDivBack(x) {
-            x.style.marginTop = '3px';
-        }
+        // function moveDiv() {
+        //     var div = document.querySelector('.Rectangle1');
+        //     div.style.marginTop = '-1px';
+        // }
+        // function moveDivBack(x) {
+        //     x.style.marginTop = '1px';
+        // }
 
         function openLink() {
             var url = "https://github.com/lostsdev";
@@ -300,7 +300,7 @@
 <body>
     <div class="Desktop1">
             <div class="Container">
-                <div class="Rectangle1" onclick="openLink()" onmouseover="moveDiv()" onmouseout="moveDivBack(this)">
+                <div class="Rectangle1" onclick="openLink()">
                     <div class="Lostslvtt">
                         lostslvtt
                     </div>
